@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Media Archive</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Search the Media Archive</h1>
+
+        <div class="search-wrapper">
+          <div class="search-bar">
+            <label for="searchQuery" class="sr-only">Search query</label>
+            <input type="text" id="searchQuery" placeholder="Search..." />
+            <button class="search-btn" onclick="searchMedia()" aria-label="Search">
+              <img src="images/search-icon.png" alt="Search" width="16" height="16">
+            </button>
+            <button class="filter-btn" onclick="toggleFilter()" aria-label="Toggle filters">
+              <img src="images/filter-icon.png" alt="Filter" width="16" height="16">
+            </button>
+          </div>
+
+          <div id="filterOptions" class="hidden">
+            <label for="mediaTypeFilter">Media Type:</label>
+            <select id="mediaTypeFilter">
+              <option value="">All Types</option>
+              <option value="photo">Photo</option>
+              <option value="video">Video</option>
+              <option value="audio">Audio</option>
+              <option value="text">Text</option>
+            </select>
+          </div>
+          
+          <div class="button-group">
+            <button class="upload-btn" onclick="showUploadForm()">Upload</button>
+            <button class="archive-btn" onclick="viewArchive()">View Archive</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload Form -->
+  <div id="uploadSection" class="form-section hidden">
+    <h2>Upload Media</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="title">Title:</label><br>
+      <input type="text" id="title" name="title" required><br><br>
+
+      <label for="description">Description:</label><br>
+      <textarea id="description" name="description" required></textarea><br><br>
+
+      <label for="type">Media Type:</label><br>
+      <select id="type" name="type" required>
+        <option value="">-- Select Media Type --</option>
+        <option value="photo">Photo</option>
+        <option value="video">Video</option>
+        <option value="audio">Audio</option>
+        <option value="text">Text</option>
+      </select><br><br>
+
+      <label for="file">Select File:</label><br>
+      <input type="file" id="file" name="file" required><br><br>
+
+      <button type="submit">Submit Upload</button>
+    </form>
+  </div>
+
+  <!-- Search Results -->
+  <div id="results"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
