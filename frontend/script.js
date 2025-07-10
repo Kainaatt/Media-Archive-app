@@ -4,7 +4,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
 
   const formData = new FormData(e.target);
 
-  const res = await fetch('http://localhost:5000/api/media/upload', {
+  const res = await fetch('https://media-archive-app-1.onrender.com/api/media/upload', {
     method: 'POST',
     body: formData
   });
@@ -37,7 +37,7 @@ async function searchMedia() {
   const query = document.getElementById('searchQuery').value;
   const type = document.getElementById('mediaTypeFilter').value;
 
-  const url = new URL('http://localhost:5000/api/media/search');
+  const url = new URL('https://media-archive-app-1.onrender.com/api/media/search');
   if (query) url.searchParams.append('query', query);
   if (type) url.searchParams.append('type', type);
 
@@ -57,7 +57,7 @@ async function searchMedia() {
     item.innerHTML = `
       <h3>${media.title} (${media.type})</h3>
       <p>${media.description}</p>
-      <a href="http://localhost:5000/${media.fileUrl}" target="_blank">View File</a>
+      <a href="https://media-archive-app-1.onrender.com/${media.fileUrl}" target="_blank">View File</a>
     `;
     resultsDiv.appendChild(item);
   });
@@ -67,7 +67,7 @@ async function searchMedia() {
 // View all archive data
 async function viewArchive() {
   try {
-    const res = await fetch('http://localhost:5000/api/media/all');
+    const res = await fetch('https://media-archive-app-1.onrender.com/api/media/all');
     const data = await res.json();
     
     const resultsDiv = document.getElementById('results');
